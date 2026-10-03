@@ -5,6 +5,7 @@
     "directory": "./public",
     "not_found_handling": "404-page"
   },
+  "previews": {},
   "routes": [
     {
       "pattern": "getexitsignal.com/*",
