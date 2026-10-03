@@ -1,20 +1,77 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Business Worth Check — Valuation Portfolio Preview</title><meta name="description" content="Preview of 20 category-specific business valuation experiences powered by Empire Flippers."><link rel="stylesheet" href="./assets/styles.css"><style>.category-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}.category-card{display:block;border:1px solid var(--line);border-radius:12px;padding:18px;text-decoration:none;background:var(--surface)}.category-card strong{display:block}.category-card span{display:block;color:var(--muted);font-size:.9rem;margin-top:4px}@media(max-width:650px){.category-list{grid-template-columns:1fr}}</style></head><body><header><div class="shell header"><span class="brand">BUSINESS WORTH CHECK</span><span class="micro">V1 preview</span></div></header><main><section class="hero shell"><p class="eyebrow">20-category valuation experiment</p><h1>What is your business worth?</h1><p class="lede">Choose the business model that best matches what you own. Each experience uses Empire Flippers' official valuation tool and category-specific context.</p><div class="category-list"><a class="category-card" href="./affiliate/"><strong>What is your affiliate business worth?</strong><span>For established affiliate-site owners</span></a>
-<a class="category-card" href="./agency/"><strong>What is your agency worth?</strong><span>For digital and marketing agency owners</span></a>
-<a class="category-card" href="./amazon-associates/"><strong>What is your Amazon Associates business worth?</strong><span>For established Amazon Associates publishers</span></a>
-<a class="category-card" href="./amazon-fba/"><strong>What is your Amazon FBA business worth?</strong><span>For established Amazon FBA owners</span></a>
-<a class="category-card" href="./amazon-fbm/"><strong>What is your Amazon FBM business worth?</strong><span>For established Amazon FBM owners</span></a>
-<a class="category-card" href="./amazon-kdp/"><strong>What is your Amazon KDP business worth?</strong><span>For established KDP publishing businesses</span></a>
-<a class="category-card" href="./amazon-merch/"><strong>What is your Amazon Merch business worth?</strong><span>For established Amazon Merch businesses</span></a>
-<a class="category-card" href="./application/"><strong>What is your mobile app worth?</strong><span>For mobile-app owners</span></a>
-<a class="category-card" href="./digital-product/"><strong>What is your digital product business worth?</strong><span>For established digital-product businesses</span></a>
-<a class="category-card" href="./display-advertising/"><strong>What is your display-advertising business worth?</strong><span>For ad-supported content-site owners</span></a>
-<a class="category-card" href="./dropshipping/"><strong>What is your dropshipping business worth?</strong><span>For profitable dropshipping owners</span></a>
-<a class="category-card" href="./ecommerce/"><strong>What is your eCommerce business worth?</strong><span>For established eCommerce owners</span></a>
-<a class="category-card" href="./info-product/"><strong>What is your info-product business worth?</strong><span>For established information-product businesses</span></a>
-<a class="category-card" href="./lead-gen/"><strong>What is your lead-gen business worth?</strong><span>For established lead-generation businesses</span></a>
-<a class="category-card" href="./newsletter/"><strong>What is your newsletter business worth?</strong><span>For established newsletter owners</span></a>
-<a class="category-card" href="./saas/"><strong>What is your SaaS worth?</strong><span>For bootstrapped and owner-operated SaaS businesses</span></a>
-<a class="category-card" href="./service/"><strong>What is your service business worth?</strong><span>For established online service businesses</span></a>
-<a class="category-card" href="./subscription/"><strong>What is your subscription business worth?</strong><span>For recurring-revenue subscription businesses</span></a>
-<a class="category-card" href="./subscription-box/"><strong>What is your subscription-box business worth?</strong><span>For established subscription-box businesses</span></a>
-<a class="category-card" href="./youtube/"><strong>What is your YouTube channel worth?</strong><span>For established YouTube channel businesses</span></a></div></section></main><footer><div class="shell footer"><span>Preview only</span><nav><a href="./disclosure/">Disclosure</a><a href="./privacy/">Privacy</a></nav></div></footer></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Business Worth Check</title>
+<meta name="description" content="Choose your business model to get a valuation estimate using Empire Flippers' official valuation tool.">
+<link rel="stylesheet" href="./assets/styles.css">
+<style>
+  .chooser{padding:8px 0 64px}
+  .chooser-copy{margin:0 0 10px;color:#d8d4cd;font-size:1.05rem}
+  .chooser-help{margin:0 0 22px;color:var(--muted);font-size:.9rem}
+  .category-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .category-card{
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    min-height:56px;padding:14px 16px;border:1px solid var(--line);border-radius:11px;
+    text-decoration:none;background:var(--surface)
+  }
+  .category-card:hover{border-color:#5a5f68;background:var(--surface2)}
+  .category-card strong{font-size:.98rem;line-height:1.25}
+  .category-card span{color:var(--accent);font-size:1.05rem;line-height:1;flex:0 0 auto}
+  @media(max-width:650px){
+    .chooser{padding-bottom:50px}
+    .category-list{grid-template-columns:1fr;gap:8px}
+    .category-card{min-height:52px;padding:12px 14px}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<header>
+  <div class="shell header">
+    <span class="brand">BUSINESS WORTH CHECK</span>
+  </div>
+</header>
+<main id="main">
+  <section class="hero shell">
+    <h1>What is your business worth?</h1>
+    <p class="lede">Choose your business model to get a valuation estimate.</p>
+  </section>
+
+  <section class="chooser shell" aria-labelledby="business-model-title">
+    <h2 id="business-model-title" style="position:absolute;left:-9999px">Choose your business model</h2>
+    <p class="chooser-help">Not sure? Choose the model that generates most of your revenue.</p>
+    <div class="category-list">
+      <a class="category-card" href="./affiliate/"><strong>Affiliate</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./agency/"><strong>Agency</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./amazon-associates/"><strong>Amazon Associates</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./amazon-fba/"><strong>Amazon FBA</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./amazon-fbm/"><strong>Amazon FBM</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./amazon-kdp/"><strong>Amazon KDP</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./amazon-merch/"><strong>Amazon Merch</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./application/"><strong>Application / Mobile App</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./digital-product/"><strong>Digital Product</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./display-advertising/"><strong>Display Advertising</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./dropshipping/"><strong>Dropshipping</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./ecommerce/"><strong>eCommerce</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./info-product/"><strong>Info Product</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./lead-gen/"><strong>Lead Gen</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./newsletter/"><strong>Newsletter</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./saas/"><strong>SaaS</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./service/"><strong>Service</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./subscription/"><strong>Subscription</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./subscription-box/"><strong>Subscription Box</strong><span aria-hidden="true">→</span></a>
+      <a class="category-card" href="./youtube/"><strong>YouTube</strong><span aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="shell footer">
+    <span>Business Worth Check</span>
+    <nav aria-label="Footer"><a href="./disclosure/">Disclosure</a><a href="./privacy/">Privacy</a></nav>
+  </div>
+</footer>
+</body>
+</html>
