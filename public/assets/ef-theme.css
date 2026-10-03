@@ -1,0 +1,13 @@
+@import url("https://vt-snippet.empireflippers.com/default-v2.css");
+:host{
+  --ef-vt-color-primary:#c8a56c;
+  --ef-vt-color-secondary:#8f7a5a;
+  --ef-vt-color-black:#f3eee6;
+  --ef-vt-color-gray:#b7afa4;
+  --ef-vt-color-white:#151311;
+  --ef-vt-color-background:#12110f;
+  --ef-vt-color-border:#3a342d;
+  --ef-vt-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+#ef-vt-app .ef-vt-app-container{box-shadow:none}
+#ef-vt-app .ef-vt-form-input,#ef-vt-app .ef-vt-form-select{color:#f3eee6}
