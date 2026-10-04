@@ -1,3 +1,4 @@
 Deployment trigger for the isolated Business Valuation Check worker.
 Created after Cloudflare production branch was set to valuation-portfolio-v1.
 No site content or Exit Signal production files changed.
+Deploy command corrected; retriggering isolated production build.
