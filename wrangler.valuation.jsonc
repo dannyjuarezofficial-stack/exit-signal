@@ -1,0 +1,21 @@
+{
+  "name": "business-valuation-check",
+  "main": "./src/valuation-worker.js",
+  "compatibility_date": "2026-09-29",
+  "assets": {
+    "directory": "./public/valuation-portfolio",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "businessvaluationcheck.com/*",
+      "zone_name": "businessvaluationcheck.com"
+    },
+    {
+      "pattern": "www.businessvaluationcheck.com/*",
+      "zone_name": "businessvaluationcheck.com"
+    }
+  ],
+  "workers_dev": false
+}
