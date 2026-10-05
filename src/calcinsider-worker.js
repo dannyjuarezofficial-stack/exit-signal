@@ -276,8 +276,8 @@ function pathFor(url) {
   return p;
 }
 
-function seo(url, status, routeType) {
-  const production = url.hostname === 'calcinsider.com';
+function seo(url, status, routeType, indexingEnabled=false) {
+  const production = url.hostname === 'calcinsider.com' && indexingEnabled;
   const path = pathFor(url);
   const indexable = production && status < 400 && (routeType === 'home' || routeType === 'niche');
   return {
@@ -316,8 +316,8 @@ ${body}
 </body></html>`;
 }
 
-function homeHtml(url) {
-  const state = seo(url, 200, 'home');
+function homeHtml(url, indexingEnabled) {
+  const state = seo(url, 200, 'home', indexingEnabled);
   const cards = NICHES.map(n => `<a class="niche-card" data-niche-link data-niche-name="${esc(n.name.toLowerCase())}" data-niche-slug="${n.slug}" href="/${n.slug}/"><strong>${esc(n.label)}</strong><span aria-hidden="true">→</span></a>`).join('');
   return shell({
     title:'eCommerce Business Valuation by Industry | Calc Insider',
@@ -346,8 +346,8 @@ function homeHtml(url) {
   });
 }
 
-function nicheHtml(url, niche) {
-  const state = seo(url, 200, 'niche');
+function nicheHtml(url, niche, indexingEnabled) {
+  const state = seo(url, 200, 'niche', indexingEnabled);
   const factorCards = niche.factors.map(([h,p]) => `<div class="signal"><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
   const faq1 = niche.factors[0];
   const faq2 = niche.factors[1];
@@ -396,8 +396,8 @@ function nicheHtml(url, niche) {
   });
 }
 
-function disclosureHtml(url) {
-  const state = seo(url, 200, 'legal');
+function disclosureHtml(url, indexingEnabled) {
+  const state = seo(url, 200, 'legal', indexingEnabled);
   return shell({
     title:'Disclosure | Calc Insider',
     description:'Calc Insider affiliate and valuation-tool disclosure.',
@@ -407,8 +407,8 @@ function disclosureHtml(url) {
   });
 }
 
-function privacyHtml(url) {
-  const state = seo(url, 200, 'legal');
+function privacyHtml(url, indexingEnabled) {
+  const state = seo(url, 200, 'legal', indexingEnabled);
   return shell({
     title:'Privacy | Calc Insider',
     description:'Calc Insider privacy information.',
@@ -418,8 +418,8 @@ function privacyHtml(url) {
   });
 }
 
-function notFound(url) {
-  const state = seo(url, 404, '404');
+function notFound(url, indexingEnabled) {
+  const state = seo(url, 404, '404', indexingEnabled);
   return shell({
     title:'Page Not Found | Calc Insider',
     description:'That Calc Insider page was not found.',
@@ -438,7 +438,8 @@ function sitemap() {
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);\n    const indexingEnabled = env.PUBLIC_INDEXING === 'true';
+    const url = new URL(request.url);
+    const indexingEnabled = env.PUBLIC_INDEXING === 'true';
 
     if (url.hostname === 'www.calcinsider.com') {
       return Response.redirect('https://calcinsider.com' + url.pathname + url.search, 301);
