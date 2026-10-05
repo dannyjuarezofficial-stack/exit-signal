@@ -1,3 +1,4 @@
+import {collect} from './calcinsider-events-collector.js';
 import {CALCINSIDER_STYLES, CALCINSIDER_APP, CALCINSIDER_FAVICON} from './calcinsider-assets.js';
 const REFERRAL_CODE = 'DBKZ7AVTPGFSXPVM';
 
@@ -444,6 +445,10 @@ export default {
 
     if (url.hostname === 'www.calcinsider.com') {
       return Response.redirect('https://calcinsider.com' + url.pathname + url.search, 301);
+    }
+
+    if (url.pathname === '/_events') {
+      return collect(request, env);
     }
 
     if (url.pathname === '/assets/styles.css') {
