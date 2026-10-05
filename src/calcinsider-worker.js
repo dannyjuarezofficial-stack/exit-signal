@@ -1,3 +1,4 @@
+import {CALCINSIDER_STYLES, CALCINSIDER_APP, CALCINSIDER_FAVICON} from './calcinsider-assets.js';
 const REFERRAL_CODE = 'DBKZ7AVTPGFSXPVM';
 
 const NICHES = [
@@ -443,6 +444,24 @@ export default {
 
     if (url.hostname === 'www.calcinsider.com') {
       return Response.redirect('https://calcinsider.com' + url.pathname + url.search, 301);
+    }
+
+    if (url.pathname === '/assets/styles.css') {
+      return new Response(CALCINSIDER_STYLES, {
+        headers:{'content-type':'text/css; charset=UTF-8','cache-control':'public, max-age=300'}
+      });
+    }
+
+    if (url.pathname === '/assets/app.js') {
+      return new Response(CALCINSIDER_APP, {
+        headers:{'content-type':'application/javascript; charset=UTF-8','cache-control':'public, max-age=300'}
+      });
+    }
+
+    if (url.pathname === '/favicon.svg') {
+      return new Response(CALCINSIDER_FAVICON, {
+        headers:{'content-type':'image/svg+xml; charset=UTF-8','cache-control':'public, max-age=3600'}
+      });
     }
 
     if (url.pathname === '/robots.txt') {
