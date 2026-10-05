@@ -5,6 +5,7 @@ const NICHES = [
     slug:'supplements', name:'Supplements', label:'Supplement Brands',
     eyebrow:'For established supplement eCommerce owners',
     intro:'Get a preliminary estimate for an established supplement eCommerce business, then review the factors buyers may examine beyond revenue.',
+    scope:'ingestible supplements and vitamin brands; use Health & Fitness for non-supplement fitness merchandise.',
     factors:[
       ['Repeat purchase quality','Subscription and replenishment behavior can make revenue more predictable, while weak repeat purchase can make growth more acquisition-dependent.'],
       ['Channel concentration','Heavy dependence on Amazon, one paid channel, or one marketplace can increase transfer risk for a buyer.'],
@@ -17,6 +18,7 @@ const NICHES = [
     slug:'pet-care', name:'Pet Care', label:'Pet Care Brands',
     eyebrow:'For established pet-care eCommerce owners',
     intro:'Estimate what a pet-care eCommerce business may be worth and review the operating traits buyers may care about in this niche.',
+    scope:'pet products, accessories and consumables; not veterinary practices or local pet services.',
     factors:[
       ['Consumable vs. durable mix','Consumables can support repeat purchasing, while durable products may depend more heavily on ongoing acquisition and new-product demand.'],
       ['Customer retention','Repeat customers, subscriptions and reorder behavior can strengthen revenue quality when they are durable and verifiable.'],
@@ -29,6 +31,7 @@ const NICHES = [
     slug:'beauty', name:'Beauty', label:'Beauty Brands',
     eyebrow:'For established beauty eCommerce owners',
     intro:'Estimate what a beauty eCommerce business may be worth and see the niche-specific factors a buyer may investigate.',
+    scope:'cosmetics, skincare and beauty-product brands; use Personal Care for grooming and everyday hygiene products.',
     factors:[
       ['Repeat and replenishment','Beauty products with natural replenishment cycles can support stronger repeat behavior than purely one-time purchases.'],
       ['Brand and intellectual property','Trademarks, formulations, packaging, brand recognition and transferable creative assets can affect defensibility.'],
@@ -41,6 +44,7 @@ const NICHES = [
     slug:'personal-care', name:'Personal Care', label:'Personal Care Brands',
     eyebrow:'For established personal-care eCommerce owners',
     intro:'Estimate what a personal-care eCommerce business may be worth and review the factors that can shape buyer confidence.',
+    scope:'grooming, hygiene and personal-care products; use Beauty for cosmetics and beauty-led skincare brands.',
     factors:[
       ['Replenishment behavior','Products that are used up and reordered can create a different revenue profile from durable or occasional purchases.'],
       ['Claims and documentation','Product claims, labeling, supplier records and transferable documentation can become diligence issues.'],
@@ -50,9 +54,10 @@ const NICHES = [
     prep:'Prepare recent financials, repeat-purchase data, channel mix, supplier documentation, inventory and revenue by major product.'
   },
   {
-    slug:'home', name:'Home', label:'Home Goods Brands',
+    slug:'home', name:'Home Goods', label:'Home Goods Brands',
     eyebrow:'For established home-goods eCommerce owners',
     intro:'Estimate what a home-goods eCommerce business may be worth and review the operational factors that can influence buyer interest.',
+    scope:'home goods, furnishings, décor and storage products; use Kitchenware for cookware and kitchen-focused products.',
     factors:[
       ['Inventory turns','Slow-moving or bulky inventory can tie up cash and create a different risk profile from fast-moving products.'],
       ['Shipping complexity','Oversized, fragile or expensive-to-ship products can affect margin quality and operational transferability.'],
@@ -65,6 +70,7 @@ const NICHES = [
     slug:'apparel-accessories', name:'Apparel & Accessories', label:'Apparel & Accessories',
     eyebrow:'For established apparel and accessories eCommerce owners',
     intro:'Estimate what an apparel or accessories eCommerce business may be worth and review the factors that make this category distinctive.',
+    scope:'clothing, fashion accessories and related DTC merchandise.',
     factors:[
       ['Returns and sizing','Fit, sizing complexity and return rates can materially affect the quality of reported revenue and margin.'],
       ['Inventory aging','Seasonal or trend-sensitive inventory can lose value faster than evergreen merchandise.'],
@@ -77,6 +83,7 @@ const NICHES = [
     slug:'automotive', name:'Automotive', label:'Automotive Brands',
     eyebrow:'For established automotive eCommerce owners',
     intro:'Estimate what an automotive eCommerce business may be worth and review the operating risks buyers may examine.',
+    scope:'vehicle parts, accessories and automotive-product brands; not repair shops or local automotive services.',
     factors:[
       ['Fitment complexity','Compatibility by make, model and year can increase catalog value while also increasing support and return complexity.'],
       ['Warranty and returns','Product failure, warranty exposure and return rates can materially affect normalized profit.'],
@@ -89,6 +96,7 @@ const NICHES = [
     slug:'health-fitness', name:'Health & Fitness', label:'Health & Fitness Brands',
     eyebrow:'For established health and fitness eCommerce owners',
     intro:'Estimate what a health and fitness eCommerce business may be worth and review the factors buyers may separate from headline revenue.',
+    scope:'fitness gear, wellness products and related merchandise; use Supplements for ingestible supplement brands.',
     factors:[
       ['Repeat vs. durable products','Replenishable products can support recurring demand while durable equipment may require continued customer acquisition.'],
       ['Claims and compliance','Health-related claims, labeling and documentation can become important diligence items.'],
@@ -101,6 +109,7 @@ const NICHES = [
     slug:'children-toys', name:'Children & Toys', label:'Children & Toys',
     eyebrow:'For established children and toy eCommerce owners',
     intro:'Estimate what a children or toy eCommerce business may be worth and review category-specific buyer considerations.',
+    scope:'toys, baby products and children-focused merchandise.',
     factors:[
       ['Safety and compliance','Age ratings, product safety, documentation and recalls can materially affect diligence.'],
       ['Seasonality and gifting','Holiday and gifting demand can create concentrated revenue periods that buyers will want to normalize.'],
@@ -113,6 +122,7 @@ const NICHES = [
     slug:'outdoors', name:'Outdoors', label:'Outdoor Brands',
     eyebrow:'For established outdoor eCommerce owners',
     intro:'Estimate what an outdoor eCommerce business may be worth and review the niche-specific factors a buyer may examine.',
+    scope:'camping, hiking, fishing and outdoor-recreation products; use Sports for sport-specific gear.',
     factors:[
       ['Seasonality','Weather, travel and seasonal recreation can concentrate revenue into particular months.'],
       ['Community and brand loyalty','Strong direct demand, enthusiast communities and repeat customers can reduce reliance on paid acquisition.'],
@@ -125,6 +135,7 @@ const NICHES = [
     slug:'food-beverages', name:'Food & Beverages', label:'Food & Beverage Brands',
     eyebrow:'For established food and beverage eCommerce owners',
     intro:'Estimate what a food or beverage eCommerce business may be worth and review the buyer factors unique to consumable products.',
+    scope:'consumable food and beverage brands; use Supplements for vitamins and supplement products.',
     factors:[
       ['Repeat purchase','Consumable products can support recurring customer behavior when reorder rates are healthy.'],
       ['Shelf life and fulfillment','Expiration, storage, shipping and cold-chain requirements can affect inventory risk and margin.'],
@@ -137,6 +148,7 @@ const NICHES = [
     slug:'sports', name:'Sports', label:'Sports Brands',
     eyebrow:'For established sports eCommerce owners',
     intro:'Estimate what a sports eCommerce business may be worth and review the demand and transferability factors buyers may examine.',
+    scope:'sport-specific equipment, apparel and accessories; use Outdoors for camping and outdoor-recreation products.',
     factors:[
       ['Seasonality','Sport seasons, events and weather can concentrate demand and complicate short-term comparisons.'],
       ['Licensing and intellectual property','Licensed merchandise or protected brand assets can create value while also creating dependency on agreements.'],
@@ -149,6 +161,7 @@ const NICHES = [
     slug:'occasions-gifts', name:'Occasions & Gifts', label:'Gift Brands',
     eyebrow:'For established gift and occasion eCommerce owners',
     intro:'Estimate what a gift-focused eCommerce business may be worth and review the factors buyers may normalize before making an offer.',
+    scope:'giftable, personalized and occasion-led products where gifting is the primary purchase use case.',
     factors:[
       ['Holiday concentration','Q4, weddings and other occasions can create large revenue spikes that buyers may normalize across years.'],
       ['Personalization workflow','Custom products can support differentiation but may also increase labor, turnaround and operational complexity.'],
@@ -161,6 +174,7 @@ const NICHES = [
     slug:'kitchenware', name:'Kitchenware', label:'Kitchenware Brands',
     eyebrow:'For established kitchenware eCommerce owners',
     intro:'Estimate what a kitchenware eCommerce business may be worth and review the niche-specific factors that can affect buyer confidence.',
+    scope:'cookware, utensils, kitchen tools and kitchen-focused products; use Home for broader home-goods brands.',
     factors:[
       ['Durable-product economics','Many kitchen products are bought infrequently, so acquisition efficiency can matter more than reorder behavior.'],
       ['Shipping and breakage','Heavy, fragile or oversized products can create hidden fulfillment and return costs.'],
@@ -173,6 +187,7 @@ const NICHES = [
     slug:'hobbies', name:'Hobbies', label:'Hobby Brands',
     eyebrow:'For established hobby eCommerce owners',
     intro:'Estimate what a hobby eCommerce business may be worth and review the factors buyers may examine in enthusiast-driven markets.',
+    scope:'craft, collector and hobby-specific products; use Gaming for gaming-led products and accessories.',
     factors:[
       ['Community loyalty','Enthusiast audiences, forums, clubs, creators and email lists can create durable demand when transferable.'],
       ['Repeat catalog behavior','Collectors and hobbyists may make repeated purchases when the catalog supports ongoing participation.'],
@@ -185,6 +200,7 @@ const NICHES = [
     slug:'gaming', name:'Gaming', label:'Gaming Brands',
     eyebrow:'For established gaming eCommerce owners',
     intro:'Estimate what a gaming eCommerce business may be worth and review the factors that can make this niche more or less transferable.',
+    scope:'gaming accessories, gaming merchandise and gaming-focused product brands.',
     factors:[
       ['Platform dependence','Demand tied to a specific console, game, marketplace or creator can change quickly.'],
       ['Licensing and IP','Licensed products and proprietary brands can create value while also creating contract dependencies.'],
@@ -197,6 +213,7 @@ const NICHES = [
     slug:'travel-products', name:'Travel Products', label:'Travel Product Brands',
     eyebrow:'For established travel-product eCommerce owners',
     intro:'Estimate what a travel-product eCommerce business may be worth and review the factors buyers may examine beyond recent sales.',
+    scope:'luggage, organizers and travel accessories; not travel agencies, bookings or hospitality businesses.',
     factors:[
       ['Travel-cycle sensitivity','Travel demand can respond to macro conditions and seasonality, so buyers may normalize unusual periods.'],
       ['Product durability','Luggage and accessories can have long replacement cycles, changing repeat-purchase expectations.'],
@@ -209,6 +226,7 @@ const NICHES = [
     slug:'technology-electronics', name:'Technology & Electronics', label:'Technology & Electronics',
     eyebrow:'For established technology and electronics eCommerce owners',
     intro:'Estimate what a technology or consumer-electronics eCommerce business may be worth and review the risks buyers may price into a deal.',
+    scope:'consumer electronics, tech accessories and technology-product brands.',
     factors:[
       ['Obsolescence','Fast product cycles can shorten inventory life and make historical performance less durable.'],
       ['Warranty and returns','Failure rates, warranty obligations and return costs can materially change normalized profit.'],
@@ -221,6 +239,7 @@ const NICHES = [
     slug:'equipment', name:'Equipment', label:'Equipment Brands',
     eyebrow:'For established equipment eCommerce owners',
     intro:'Estimate what an equipment eCommerce business may be worth and review the factors buyers may examine in higher-ticket product businesses.',
+    scope:'higher-ticket specialized equipment sold online; not local equipment service businesses.',
     factors:[
       ['Ticket size and sales cycle','Higher-value products can produce attractive order economics while creating longer and lumpier sales cycles.'],
       ['B2B vs. B2C mix','Repeat commercial accounts can behave differently from one-time consumer purchases and may affect concentration risk.'],
@@ -233,6 +252,7 @@ const NICHES = [
     slug:'office-b2b-supply', name:'Office & B2B Supply', label:'Office & B2B Supply',
     eyebrow:'For established office and B2B supply eCommerce owners',
     intro:'Estimate what an office or B2B supply eCommerce business may be worth and review the factors buyers may examine in account-driven commerce.',
+    scope:'office, workplace and recurring B2B supply products sold through eCommerce.',
     factors:[
       ['Recurring business accounts','Repeat B2B purchasing can create durable revenue when customer relationships transfer cleanly.'],
       ['Customer concentration','A few large accounts can make revenue predictable while also creating material concentration risk.'],
@@ -315,7 +335,7 @@ function homeHtml(url) {
 <div><p class="eyebrow">20 focused niches</p><h2 id="niche-title">Find your industry</h2></div>
 <label class="search-label" for="niche-search"><span>Filter niches</span><input id="niche-search" type="search" inputmode="search" autocomplete="off" placeholder="Try pet, beauty, automotive…"></label>
 </div>
-<p class="chooser-help">Not an exact match? Choose the closest product category. The valuation engine is locked to eCommerce on every page so the experiment compares niche demand rather than different business models.</p>
+<p class="chooser-help">Not an exact match? Choose the closest product category. Every niche uses Empire Flippers’ eCommerce valuation flow, so choose a page based on what you sell.</p>
 <div class="niche-list" id="niche-list">${cards}</div>
 <p class="empty-state hidden" id="niche-empty">No matching niche. Try a broader term.</p>
 </section>
@@ -342,14 +362,14 @@ function nicheHtml(url, niche) {
 <p class="eyebrow">${esc(niche.eyebrow)}</p>
 <h1>What is your ${esc(niche.name)} eCommerce business worth?</h1>
 <p class="lede">${esc(niche.intro)}</p>
-<p class="micro">Valuation powered by Empire Flippers. No email gate from Calc Insider.</p>
+<p class="fit-note"><strong>Best fit:</strong> ${esc(niche.scope)}</p><p class="micro">Valuation powered by Empire Flippers. No email gate from Calc Insider.</p>
 </section>
 
 <section id="valuation" class="section shell tool-section">
 <div class="card">
 <p class="eyebrow">Official valuation tool</p>
 <h2>Start with the numbers.</h2>
-<p>The valuation experience is locked to the <strong>eCommerce</strong> business model. Your niche context appears below so you can see which operating factors may deserve extra attention.</p>
+<p>This page uses Empire Flippers’ <strong>eCommerce</strong> valuation flow. If Empire Flippers would classify your business primarily as Amazon FBA, SaaS, content or another model, this niche page may not be the right valuation path.</p>
 <div id="valuation-container"><div id="ef-vt-embed"></div><div id="ef-fallback" class="notice hidden">The embed did not load. <a id="ef-fallback-link" href="https://empireflippers.com/vt/?referrer=${REFERRAL_CODE}" rel="sponsored noopener">Open Empire Flippers’ valuation tool directly.</a></div></div>
 <p class="micro">Calc Insider may earn a referral fee if an eligible transaction closes. You pay no extra. <a href="/disclosure/">Disclosure</a> · <a href="/privacy/">Privacy</a></p>
 </div>
