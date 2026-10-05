@@ -8,7 +8,7 @@
     "run_worker_first": true
   },
   "vars": {
-    "PUBLIC_INDEXING": "false"
+    "PUBLIC_INDEXING": "true"
   },
   "workers_dev": true,
   "analytics_engine_datasets": [
