@@ -19,6 +19,12 @@
   ],
   "workers_dev": false,
   "vars": {
-    "PUBLIC_INDEXING": "false"
-  }
+    "PUBLIC_INDEXING": "true"
+  },
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "exit_signal_events"
+    }
+  ]
 }
