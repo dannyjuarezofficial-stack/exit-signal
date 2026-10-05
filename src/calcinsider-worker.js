@@ -82,7 +82,7 @@ const NICHES = [
   {
     slug:'automotive', name:'Automotive', label:'Automotive Brands',
     eyebrow:'For established automotive eCommerce owners',
-    intro:'Estimate what an automotive eCommerce business may be worth and review the operating risks buyers may examine.',
+    intro:'Estimate what an automotive-parts or accessories eCommerce business may be worth, with extra attention to fitment, warranty exposure and catalog durability.',
     scope:'vehicle parts, accessories and automotive-product brands; not repair shops or local automotive services.',
     factors:[
       ['Fitment complexity','Compatibility by make, model and year can increase catalog value while also increasing support and return complexity.'],
@@ -121,7 +121,7 @@ const NICHES = [
   {
     slug:'outdoors', name:'Outdoors', label:'Outdoor Brands',
     eyebrow:'For established outdoor eCommerce owners',
-    intro:'Estimate what an outdoor eCommerce business may be worth and review the niche-specific factors a buyer may examine.',
+    intro:'Estimate what a camping or outdoor-recreation eCommerce business may be worth, with extra attention to seasonal demand, enthusiast loyalty and inventory profile.',
     scope:'camping, hiking, fishing and outdoor-recreation products; use Sports for sport-specific gear.',
     factors:[
       ['Seasonality','Weather, travel and seasonal recreation can concentrate revenue into particular months.'],
@@ -147,7 +147,7 @@ const NICHES = [
   {
     slug:'sports', name:'Sports', label:'Sports Brands',
     eyebrow:'For established sports eCommerce owners',
-    intro:'Estimate what a sports eCommerce business may be worth and review the demand and transferability factors buyers may examine.',
+    intro:'Estimate what a sport-specific eCommerce business may be worth, with extra attention to sport seasons, licensing and community-driven demand.',
     scope:'sport-specific equipment, apparel and accessories; use Outdoors for camping and outdoor-recreation products.',
     factors:[
       ['Seasonality','Sport seasons, events and weather can concentrate demand and complicate short-term comparisons.'],
@@ -225,7 +225,7 @@ const NICHES = [
   {
     slug:'technology-electronics', name:'Technology & Electronics', label:'Technology & Electronics',
     eyebrow:'For established technology and electronics eCommerce owners',
-    intro:'Estimate what a technology or consumer-electronics eCommerce business may be worth and review the risks buyers may price into a deal.',
+    intro:'Estimate what a consumer-electronics eCommerce business may be worth, with extra attention to obsolescence, warranty costs and fast product cycles.',
     scope:'consumer electronics, tech accessories and technology-product brands.',
     factors:[
       ['Obsolescence','Fast product cycles can shorten inventory life and make historical performance less durable.'],
