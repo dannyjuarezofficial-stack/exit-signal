@@ -438,14 +438,17 @@ function sitemap() {
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    const url = new URL(request.url);\n    const indexingEnabled = env.PUBLIC_INDEXING === 'true';
 
     if (url.hostname === 'www.calcinsider.com') {
       return Response.redirect('https://calcinsider.com' + url.pathname + url.search, 301);
     }
 
     if (url.pathname === '/robots.txt') {
-      return new Response('User-agent: *\nAllow: /\nSitemap: https://calcinsider.com/sitemap.xml\n', {
+      const robots = indexingEnabled
+        ? 'User-agent: *\\nAllow: /\\nSitemap: https://calcinsider.com/sitemap.xml\\n'
+        : 'User-agent: *\\nDisallow: /\\n';
+      return new Response(robots, {
         headers:{'content-type':'text/plain; charset=UTF-8','cache-control':'public, max-age=3600'}
       });
     }
@@ -460,18 +463,18 @@ export default {
     let html = '';
     let status = 200;
 
-    if (path === '/') html = homeHtml(url);
-    else if (path === '/disclosure/') html = disclosureHtml(url);
-    else if (path === '/privacy/') html = privacyHtml(url);
+    if (path === '/') html = homeHtml(url, indexingEnabled);
+    else if (path === '/disclosure/') html = disclosureHtml(url, indexingEnabled);
+    else if (path === '/privacy/') html = privacyHtml(url, indexingEnabled);
     else {
       const slug = path.split('/').filter(Boolean)[0] || '';
       const niche = path === '/' + slug + '/' ? NICHE_MAP.get(slug) : null;
-      if (niche) html = nicheHtml(url, niche);
+      if (niche) html = nicheHtml(url, niche, indexingEnabled);
       else {
         const asset = await env.ASSETS.fetch(request);
         if (asset.status !== 404) return asset;
         status = 404;
-        html = notFound(url);
+        html = notFound(url, indexingEnabled);
       }
     }
 
