@@ -31,7 +31,9 @@ h1{font-size:clamp(2.65rem,7.6vw,4.65rem);line-height:1.02;margin:0 0 16px}
 h2{font-size:clamp(1.9rem,5vw,2.7rem);line-height:1.08;margin:0 0 14px}
 h3{font-size:1.17rem;margin:0 0 8px}
 .lede{font-size:clamp(1.04rem,2.1vw,1.21rem);color:#d8d4cd;max-width:730px;margin:0}
-.micro{font-size:.9rem;color:var(--muted);margin:13px 0 0}\n.fit-note{margin:18px 0 0;padding:12px 14px;border-left:2px solid var(--accent);background:#111315;color:var(--muted)}\n.fit-note strong{color:var(--text)}
+.micro{font-size:.9rem;color:var(--muted);margin:13px 0 0}
+.fit-note{margin:18px 0 0;padding:12px 14px;border-left:2px solid var(--accent);background:#111315;color:var(--muted)}
+.fit-note strong{color:var(--text)}
 .section{padding:64px 0;border-top:1px solid rgba(255,255,255,.07)}
 .compact-section{padding:36px 0 54px}
 .tool-section{padding-top:16px;border-top:0}
