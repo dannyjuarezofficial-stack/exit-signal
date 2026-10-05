@@ -1,0 +1,21 @@
+{
+  "name": "calcinsider",
+  "main": "./src/calcinsider-worker.js",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    "directory": "./public/calcinsider",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "calcinsider.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.calcinsider.com",
+      "custom_domain": true
+    }
+  ],
+  "workers_dev": false
+}
