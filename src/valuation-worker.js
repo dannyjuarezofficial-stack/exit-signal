@@ -54,7 +54,7 @@ function rewriteHtml(html, state) {
   } else {
     html = html.replace(/<\/head>/i, '<meta name="robots" content="' + state.robots + '"></head>');
   }
-  return html.replace(/<\/head>/i, '<link rel="canonical" href="' + state.canonical + '"><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=vbc-1"></head>');
+  return html.replace(/<\/head>/i, '<link rel="canonical" href="' + state.canonical + '"><link rel="icon" type="image/svg+xml" href="/favicon.svg?v=bvc-2"></head>');
 }
 
 export default {
