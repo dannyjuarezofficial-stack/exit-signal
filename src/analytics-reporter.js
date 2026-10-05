@@ -75,7 +75,7 @@ async function archiveDay(env, day) {
           blob3 AS category_id,
           blob4 AS category_slug,
           blob5 AS experience_version,
-          SUM(_sample_interval * double1) AS event_count
+          SUM(double1) AS event_count
         FROM ${DATASET}
         WHERE timestamp >= $start AND timestamp < $end
         GROUP BY site, event, category_id, category_slug, experience_version
