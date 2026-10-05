@@ -10,5 +10,11 @@
   "vars": {
     "PUBLIC_INDEXING": "false"
   },
-  "workers_dev": true
+  "workers_dev": true,
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "exit_signal_events"
+    }
+  ]
 }
