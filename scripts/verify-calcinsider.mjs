@@ -15,7 +15,7 @@ const slugs=[
 
 const checks=[
   ['exactly 20 niche definitions', (worker.match(/slug:'/g)||[]).length===20],
-  ['all slugs present', slugs.every(s=>worker.includes("slug:'"+s+"'"))],
+  ['all slugs present', slugs.every(s=>worker.includes("slug:'"+s+"'"))],\n  ['all 20 niches have scope boundaries', (worker.match(/scope:'/g)||[]).length===20],\n  ['no visitor-facing experiment language', !worker.includes('the experiment compares niche demand')],
   ['eCommerce locked', worker.includes("data-monetization=\"eCommerce\"") && app.includes("monetizations:[monetization]")],
   ['EF referral code preserved', worker.includes('DBKZ7AVTPGFSXPVM') && app.includes('DBKZ7AVTPGFSXPVM')],
   ['interaction tracking present', app.includes("track('valuation_interaction')")],
@@ -28,7 +28,7 @@ const checks=[
   ['CalcInsider worker name set', wrangler.includes('"name": "calcinsider"')],
   ['favicon is CI', favicon.includes('>CI<')],
   ['mobile breakpoint present', css.includes('@media(max-width:650px)')],
-  ['focus-visible styling present', css.includes(':focus-visible')]
+  ['focus-visible styling present', css.includes(':focus-visible')],\n  ['best-fit scope styling present', css.includes('.fit-note')]
 ];
 
 let failed=0;
