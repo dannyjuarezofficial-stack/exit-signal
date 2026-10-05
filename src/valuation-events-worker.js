@@ -1,5 +1,6 @@
 import site from './valuation-worker.js';
 import {collect} from './events-collector.js';
+import {runDailyArchive, runWeeklyReport} from './analytics-reporter.js';
 export default {
   async fetch(request,env,ctx){
     const url=new URL(request.url);
@@ -10,5 +11,15 @@ export default {
     const headers=new Headers(response.headers);headers.delete('content-length');headers.delete('etag');headers.delete('content-encoding');
     const html=(await response.text()).replace('</body>','<script src="/assets/events.js" defer></script></body>');
     return new Response(html,{status:response.status,headers});
+  },
+
+  async scheduled(controller, env, ctx) {
+    if (controller.cron === '20 0 * * *') {
+      ctx.waitUntil(runDailyArchive(env, controller.scheduledTime));
+      return;
+    }
+    if (controller.cron === '35 0 * * MON') {
+      ctx.waitUntil(runWeeklyReport(env, controller.scheduledTime));
+    }
   }
 };
