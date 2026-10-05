@@ -1,3 +1,4 @@
 Deploy BVC aggregate tracking using wrangler.valuation-events.jsonc.
 Cloudflare Builds branch and command updated 2026-10-05.
 Analytics Engine enabled; retrigger production deployment 2026-10-05.
+D1 archive/reporting wired; retrigger production deployment 2026-10-05.
