@@ -54,3 +54,11 @@ Before launch:
 - verify favicon / 404 / robots / sitemap;
 - run overlap/cannibalization audit;
 - verify named analytics event receipt where available.
+
+## Second-pass safety patch
+
+- Public indexing is **off by default**, even on calcinsider.com.
+- `PUBLIC_INDEXING` must be deliberately changed to `true` only at the approved launch gate after overlap/cannibalization, runtime and measurement QA.
+- While indexing is off, generated pages emit `noindex,follow` and robots.txt disallows crawling.
+- Visitor-facing copy no longer mentions the internal experiment.
+- All 20 niches now carry an explicit Best fit scope to reduce overlap (Beauty vs Personal Care, Home vs Kitchenware, Sports vs Outdoors, Supplements vs Health & Fitness, etc.).
