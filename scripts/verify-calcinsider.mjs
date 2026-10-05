@@ -30,7 +30,10 @@ const checks=[
   ['mobile breakpoint present', css.includes('@media(max-width:650px)')],
   ['focus-visible styling present', css.includes(':focus-visible')],\n  ['best-fit scope styling present', css.includes('.fit-note')],
   ['stylesheet has no literal backslash-n escapes', !css.includes('\\\\n')],
-  ['critical asset routes served directly', worker.includes("url.pathname === '/assets/styles.css'") && worker.includes("url.pathname === '/assets/app.js'") && worker.includes("url.pathname === '/favicon.svg'")]
+  ['critical asset routes served directly', worker.includes("url.pathname === '/assets/styles.css'") && worker.includes("url.pathname === '/assets/app.js'") && worker.includes("url.pathname === '/favicon.svg'")],
+  ['aggregate event collector wired', worker.includes("url.pathname === '/_events'") && app.includes("fetch('/_events'")],
+  ['production indexing explicitly enabled', wrangler.includes('"PUBLIC_INDEXING": "true"')],
+  ['production analytics binding present', wrangler.includes('"binding": "EVENTS"') && wrangler.includes('"dataset": "exit_signal_events"')]
 ];
 
 let failed=0;
