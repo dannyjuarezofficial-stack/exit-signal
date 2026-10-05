@@ -1,0 +1,14 @@
+{
+  "name": "calcinsider-preview",
+  "main": "./src/calcinsider-worker.js",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    "directory": "./public/calcinsider",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "vars": {
+    "PUBLIC_INDEXING": "false"
+  },
+  "workers_dev": true
+}
