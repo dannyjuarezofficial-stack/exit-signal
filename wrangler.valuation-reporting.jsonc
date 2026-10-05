@@ -31,7 +31,7 @@
     {
       "binding": "REPORT_DB",
       "database_name": "exit-signal-analytics-archive",
-      "database_id": "ca68ad70-a838-4f7b-901f-c3be9959de68"
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID"
     }
   ],
   "triggers": {
