@@ -28,7 +28,9 @@ const checks=[
   ['CalcInsider worker name set', wrangler.includes('"name": "calcinsider"')],
   ['favicon is CI', favicon.includes('>CI<')],
   ['mobile breakpoint present', css.includes('@media(max-width:650px)')],
-  ['focus-visible styling present', css.includes(':focus-visible')],\n  ['best-fit scope styling present', css.includes('.fit-note')]
+  ['focus-visible styling present', css.includes(':focus-visible')],\n  ['best-fit scope styling present', css.includes('.fit-note')],
+  ['stylesheet has no literal backslash-n escapes', !css.includes('\\\\n')],
+  ['critical asset routes served directly', worker.includes("url.pathname === '/assets/styles.css'") && worker.includes("url.pathname === '/assets/app.js'") && worker.includes("url.pathname === '/favicon.svg'")]
 ];
 
 let failed=0;
