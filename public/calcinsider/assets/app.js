@@ -19,6 +19,18 @@
       if(window.zaraz?.track) window.zaraz.track(name,safe);
       window.dataLayer=window.dataLayer||[];
       window.dataLayer.push({event:name,...safe});
+      fetch('/_events',{
+        method:'POST',
+        headers:{'content-type':'application/json'},
+        body:JSON.stringify({
+          event:name,
+          category_id:nicheId,
+          category_slug:nicheSlug,
+          experience_version:version
+        }),
+        credentials:'omit',
+        keepalive:true
+      }).catch(()=>{});
       console.info('[Calc Insider event]',name,safe);
     } catch (_) {}
   }
