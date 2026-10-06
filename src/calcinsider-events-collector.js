@@ -51,7 +51,8 @@ export async function collect(request, env) {
         data.event,
         safe('category_id'),
         safe('category_slug'),
-        safe('experience_version')
+        safe('experience_version'),
+        'calcinsider'
       ],
       doubles:[1]
     });
