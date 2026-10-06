@@ -1,0 +1,43 @@
+{
+  "name": "business-valuation-check",
+  "main": "./src/valuation-events-worker.js",
+  "compatibility_date": "2026-10-04",
+  "assets": {
+    "directory": "./public/valuation-portfolio",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "routes": [
+    {
+      "pattern": "businessvaluationcheck.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.businessvaluationcheck.com",
+      "custom_domain": true
+    }
+  ],
+  "workers_dev": false,
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "exit_signal_events"
+    }
+  ],
+  "analytics": {
+    "binding": "ANALYTICS_SQL"
+  },
+  "d1_databases": [
+    {
+      "binding": "REPORT_DB",
+      "database_name": "exit-signal-analytics-archive",
+      "database_id": "ca68ad70-a838-4f7b-901f-c3be9959de68"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "20 0 * * *",
+      "35 0 * * MON"
+    ]
+  }
+}
