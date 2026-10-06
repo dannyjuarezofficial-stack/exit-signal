@@ -1,8 +1,11 @@
 {
   "name": "divine-lake-04ab",
-  "compatibility_date": "2026-09-29",
+  "main": "./src/exit-signal-events-worker.js",
+  "compatibility_date": "2026-10-05",
   "assets": {
     "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true,
     "not_found_handling": "404-page"
   },
   "routes": [
@@ -15,5 +18,19 @@
       "zone_name": "getexitsignal.com"
     }
   ],
-  "workers_dev": true
+  "workers_dev": true,
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "exit_signal_events"
+    }
+  ],
+  "previews": {
+    "analytics_engine_datasets": [
+      {
+        "binding": "EVENTS",
+        "dataset": "exit_signal_events"
+      }
+    ]
+  }
 }
