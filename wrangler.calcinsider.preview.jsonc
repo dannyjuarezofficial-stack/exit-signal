@@ -1,0 +1,20 @@
+{
+  "name": "calcinsider-preview",
+  "main": "./src/calcinsider-worker.js",
+  "compatibility_date": "2026-10-05",
+  "assets": {
+    "directory": "./public/calcinsider",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "vars": {
+    "PUBLIC_INDEXING": "true"
+  },
+  "workers_dev": true,
+  "analytics_engine_datasets": [
+    {
+      "binding": "EVENTS",
+      "dataset": "exit_signal_events"
+    }
+  ]
+}

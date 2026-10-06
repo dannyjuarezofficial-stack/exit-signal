@@ -1,0 +1,8 @@
+Trigger isolated CalcInsider preview on calcinsider-preview service — 2026-10-05.
+Asset routing fix ready; retrigger isolated preview — 2026-10-05.
+Launch-prep analytics/indexing state ready; automated build check — 2026-10-05.
+Cloudflare zone active; enable production-host indexing — 2026-10-05.
+Stable site_id schema update; retrigger CalcInsider analytics deployment — 2026-10-05.
+PostHog aggregate forwarding deployment — 2026-10-05.
+Retry after ctx forwarding fix — 2026-10-05.
+Source attribution deploy trigger — 2026-10-05.
