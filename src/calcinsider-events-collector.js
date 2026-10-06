@@ -70,12 +70,15 @@ export async function collect(request, env, ctx) {
   const dimensions={
     category_id:safe('category_id'),
     category_slug:safe('category_slug'),
-    experience_version:safe('experience_version')
+    experience_version:safe('experience_version'),
+    source_channel:safe('source_channel'),
+    source_platform:safe('source_platform'),
+    campaign_id:safe('campaign_id')
   };
   try {
     env.EVENTS.writeDataPoint({
       indexes:[url.hostname],
-      blobs:[url.hostname,data.event,dimensions.category_id,dimensions.category_slug,dimensions.experience_version,siteId],
+      blobs:[url.hostname,data.event,dimensions.category_id,dimensions.category_slug,dimensions.experience_version,siteId,'',dimensions.source_channel,dimensions.source_platform,dimensions.campaign_id],
       doubles:[1]
     });
   } catch {
