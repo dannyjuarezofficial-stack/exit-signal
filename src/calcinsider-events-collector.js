@@ -11,7 +11,30 @@ const EVENTS = new Set([
   'engaged_30s','engaged_60s','engaged_120s','engaged_300s'
 ]);
 
-export async function collect(request, env) {
+const POSTHOG_KEY = 'phc_m96hVU38JcMp2UACzAwcns6RZB6PHqMZ8kwZKRuQSQry';
+const POSTHOG_HOST = 'https://us.i.posthog.com/capture/';
+
+async function forwardPostHog(event, siteId, dimensions={}) {
+  const props = {
+    distinct_id: siteId,
+    $process_person_profile: false,
+    $geoip_disable: true,
+    site_id: siteId,
+    source: 'cloudflare_aggregate'
+  };
+  for (const [key,value] of Object.entries(dimensions)) {
+    if (value) props[key]=value;
+  }
+  try {
+    await fetch(POSTHOG_HOST,{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({api_key:POSTHOG_KEY,event,properties:props})
+    });
+  } catch {}
+}
+
+export async function collect(request, env, ctx) {
   const reply = status => new Response(null,{status,headers:{'cache-control':'no-store'}});
   if(request.method !== 'POST') return reply(405);
   const url = new URL(request.url);
@@ -43,21 +66,21 @@ export async function collect(request, env) {
   const safe = key => typeof data[key]==='string' && /^[a-zA-Z0-9_-]{1,64}$/.test(data[key]) ? data[key] : '';
   if(!env.EVENTS?.writeDataPoint) return reply(503);
 
+  const siteId='calcinsider';
+  const dimensions={
+    category_id:safe('category_id'),
+    category_slug:safe('category_slug'),
+    experience_version:safe('experience_version')
+  };
   try {
     env.EVENTS.writeDataPoint({
       indexes:[url.hostname],
-      blobs:[
-        url.hostname,
-        data.event,
-        safe('category_id'),
-        safe('category_slug'),
-        safe('experience_version'),
-        'calcinsider'
-      ],
+      blobs:[url.hostname,data.event,dimensions.category_id,dimensions.category_slug,dimensions.experience_version,siteId],
       doubles:[1]
     });
   } catch {
     return reply(503);
   }
+  ctx?.waitUntil(forwardPostHog(data.event,siteId,dimensions));
   return reply(204);
 }
