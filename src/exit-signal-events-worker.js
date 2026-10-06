@@ -35,7 +35,7 @@ const CLIENT = `(() => {
 export default {
   async fetch(request, env) {
     const url=new URL(request.url);
-    if(url.pathname==='/_events') return collect(request,env);
+    if(url.pathname==='/_events') return collect(request,env,ctx);
     if(url.pathname==='/assets/events.js') {
       return new Response(CLIENT,{
         headers:{
