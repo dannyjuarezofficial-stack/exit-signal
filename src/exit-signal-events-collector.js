@@ -66,12 +66,15 @@ export async function collect(request, env, ctx) {
   if(!env.EVENTS?.writeDataPoint) return reply(503);
   const dimensions={
     experience_version:safe('experience_version'),
-    result_type:safe('result_type')
+    result_type:safe('result_type'),
+    source_channel:safe('source_channel'),
+    source_platform:safe('source_platform'),
+    campaign_id:safe('campaign_id')
   };
   try {
     env.EVENTS.writeDataPoint({
       indexes:[url.hostname],
-      blobs:[url.hostname,data.event,'','',dimensions.experience_version,'exit_signal',dimensions.result_type],
+      blobs:[url.hostname,data.event,'','',dimensions.experience_version,'exit_signal',dimensions.result_type,dimensions.source_channel,dimensions.source_platform,dimensions.campaign_id],
       doubles:[1]
     });
   } catch {
