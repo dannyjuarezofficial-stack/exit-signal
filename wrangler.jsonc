@@ -24,5 +24,13 @@
       "binding": "EVENTS",
       "dataset": "exit_signal_events"
     }
-  ]
+  ],
+  "previews": {
+    "analytics_engine_datasets": [
+      {
+        "binding": "EVENTS",
+        "dataset": "exit_signal_events"
+      }
+    ]
+  }
 }
