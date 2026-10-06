@@ -8,7 +8,30 @@ const EVENTS = new Set([
   'engaged_30s','engaged_60s','engaged_120s','engaged_300s'
 ]);
 
-export async function collect(request, env) {
+const POSTHOG_KEY = 'phc_m96hVU38JcMp2UACzAwcns6RZB6PHqMZ8kwZKRuQSQry';
+const POSTHOG_HOST = 'https://us.i.posthog.com/capture/';
+
+async function forwardPostHog(event, dimensions={}) {
+  const props={
+    distinct_id:'exit_signal',
+    $process_person_profile:false,
+    $geoip_disable:true,
+    site_id:'exit_signal',
+    source:'cloudflare_aggregate'
+  };
+  for(const [key,value] of Object.entries(dimensions)){
+    if(value) props[key]=value;
+  }
+  try {
+    await fetch(POSTHOG_HOST,{
+      method:'POST',
+      headers:{'content-type':'application/json'},
+      body:JSON.stringify({api_key:POSTHOG_KEY,event,properties:props})
+    });
+  } catch {}
+}
+
+export async function collect(request, env, ctx) {
   const reply = status => new Response(null,{status,headers:{'cache-control':'no-store'}});
   if(request.method !== 'POST') return reply(405);
   const url = new URL(request.url);
@@ -41,22 +64,19 @@ export async function collect(request, env) {
   const safe = key => typeof data[key]==='string' && /^[a-zA-Z0-9_-]{1,64}$/.test(data[key]) ? data[key] : '';
 
   if(!env.EVENTS?.writeDataPoint) return reply(503);
+  const dimensions={
+    experience_version:safe('experience_version'),
+    result_type:safe('result_type')
+  };
   try {
     env.EVENTS.writeDataPoint({
       indexes:[url.hostname],
-      blobs:[
-        url.hostname,
-        data.event,
-        '',
-        '',
-        safe('experience_version'),
-        'exit_signal',
-        safe('result_type')
-      ],
+      blobs:[url.hostname,data.event,'','',dimensions.experience_version,'exit_signal',dimensions.result_type],
       doubles:[1]
     });
   } catch {
     return reply(503);
   }
+  ctx?.waitUntil(forwardPostHog(data.event,dimensions));
   return reply(204);
 }
