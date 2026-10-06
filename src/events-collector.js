@@ -1,4 +1,5 @@
 const HOSTS = new Set(['getexitsignal.com','www.getexitsignal.com','businessvaluationcheck.com','www.businessvaluationcheck.com','calcinsider.com','www.calcinsider.com']);
+const SITE_IDS = new Map([['getexitsignal.com','exit_signal'],['www.getexitsignal.com','exit_signal'],['businessvaluationcheck.com','business_valuation_check'],['www.businessvaluationcheck.com','business_valuation_check'],['calcinsider.com','calcinsider'],['www.calcinsider.com','calcinsider']]);
 const EVENTS = new Set(['page_view','quiz_start','quiz_complete','result_type','valuation_open','valuation_result_visible','valuation_impression','valuation_embed_loaded','valuation_embed_error','valuation_interaction','ef_outbound_click','scroll_25','scroll_50','scroll_75','scroll_100','engaged_30s','engaged_60s','engaged_120s','engaged_300s']);
 export async function collect(request, env) {
   const reply = status => new Response(null,{status,headers:{'cache-control':'no-store'}});
@@ -21,7 +22,7 @@ export async function collect(request, env) {
   // Never store raw URLs, IPs, cookies, referrers, answers, financial inputs or free text.
   if(!env.EVENTS?.writeDataPoint) return reply(503);
   try {
-    env.EVENTS.writeDataPoint({indexes:[url.hostname],blobs:[url.hostname,data.event,safe('category_id'),safe('category_slug'),safe('experience_version')],doubles:[1]});
+    env.EVENTS.writeDataPoint({indexes:[url.hostname],blobs:[url.hostname,data.event,safe('category_id'),safe('category_slug'),safe('experience_version'),SITE_IDS.get(url.hostname)||''],doubles:[1]});
   } catch {return reply(503);}
   return reply(204);
 }
