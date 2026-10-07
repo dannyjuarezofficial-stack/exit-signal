@@ -1,9 +1,9 @@
 const HOSTS = new Set(['getexitsignal.com','www.getexitsignal.com']);
 const EVENTS = new Set([
-  'page_view','quiz_start','quiz_complete','result_type',
+  'page_view','quiz_start','quiz_step_reached','quiz_complete','result_type',
   'valuation_open','valuation_result_visible','valuation_impression',
   'valuation_embed_loaded','valuation_embed_error','valuation_interaction',
-  'ef_outbound_click',
+  'ef_handoff_notice_visible','ef_outbound_click',
   'scroll_25','scroll_50','scroll_75','scroll_100',
   'engaged_30s','engaged_60s','engaged_120s','engaged_300s'
 ]);
@@ -69,12 +69,14 @@ export async function collect(request, env, ctx) {
     result_type:safe('result_type'),
     source_channel:safe('source_channel'),
     source_platform:safe('source_platform'),
-    campaign_id:safe('campaign_id')
+    campaign_id:safe('campaign_id'),
+    quiz_step:safe('quiz_step'),
+    question_id:safe('question_id')
   };
   try {
     env.EVENTS.writeDataPoint({
       indexes:[url.hostname],
-      blobs:[url.hostname,data.event,'','',dimensions.experience_version,'exit_signal',dimensions.result_type,dimensions.source_channel,dimensions.source_platform,dimensions.campaign_id],
+      blobs:[url.hostname,data.event,'','',dimensions.experience_version,'exit_signal',dimensions.result_type,dimensions.source_channel,dimensions.source_platform,dimensions.campaign_id,dimensions.quiz_step,dimensions.question_id],
       doubles:[1]
     });
   } catch {
