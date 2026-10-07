@@ -6,6 +6,9 @@
   const answers = {};
   let started = false;
   let efLoaded = false;
+  let valuationResultSeen = false;
+  let handoffNoticeSeen = false;
+  const reachedSteps = new Set();
 
   const qText = document.getElementById('question-text');
   const opts = document.getElementById('answer-options');
@@ -28,10 +31,20 @@
   }
   window.exitSignalTrack = track;
 
+  function trackStepReached() {
+    const item = questions[step];
+    const key = `${step + 1}:${item.id}`;
+    if (reachedSteps.has(key)) return;
+    reachedSteps.add(key);
+    track('quiz_step_reached',{quiz_step:String(step + 1),question_id:item.id});
+  }
+
   function startQuiz() {
-    if (started) return;
-    started = true;
-    track('quiz_start');
+    if (!started) {
+      started = true;
+      track('quiz_start');
+    }
+    trackStepReached();
   }
 
   document.querySelectorAll('[data-track="quiz_start"]').forEach(el => el.addEventListener('click', startQuiz));
@@ -61,6 +74,7 @@
     back.disabled = step===0;
     next.textContent = step===questions.length-1 ? 'See my reading' : 'Next';
     next.disabled = !answers[item.id];
+    if (started) trackStepReached();
   }
 
   function showResult() {
@@ -86,7 +100,7 @@
     else showResult();
   });
   document.getElementById('restart-button').addEventListener('click',()=>{
-    Object.keys(answers).forEach(k=>delete answers[k]); step=0; started=false;
+    Object.keys(answers).forEach(k=>delete answers[k]); step=0; started=false; reachedSteps.clear();
     resultSection.classList.add('hidden'); valuationSection.classList.add('hidden');
     renderQuestion(); document.getElementById('check').scrollIntoView({behavior:'smooth'});
   });
@@ -98,7 +112,18 @@
       if(root.host.dataset.exitSignalWired==='true') return true;
       root.host.dataset.exitSignalWired='true';
       const inspect = () => {
-        if(root.querySelector('.ef-vt-results')) track('valuation_result_visible');
+        if(root.querySelector('.ef-vt-results') && !valuationResultSeen) {
+          valuationResultSeen = true;
+          track('valuation_result_visible');
+          const notice=document.getElementById('ef-handoff-notice');
+          if(notice) {
+            notice.classList.remove('hidden');
+            if(!handoffNoticeSeen) {
+              handoffNoticeSeen = true;
+              track('ef_handoff_notice_visible');
+            }
+          }
+        }
       };
       root.addEventListener('click',e=>{
         const target=e.composedPath().find(n=>n?.tagName==='A'||n?.tagName==='BUTTON');
