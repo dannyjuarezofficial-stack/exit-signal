@@ -9,9 +9,9 @@
       ['12to24','12 to 24 months','neutral','The business has at least 12 months of history.'],
       ['2to4','2 to 4 years','helps','The business has a multi-year operating history.'],
       ['4plus','More than 4 years','helps','The business has a long operating history.'] ]},
-    {id:'profit', q:'Average monthly net profit over the last 12 months, before paying yourself?', options:[
+    {id:'profit', q:'Average monthly net profit over the last 12 months, after business expenses?', options:[
       ['loss','Break-even or losing money','too_early','The business is not currently producing positive average net profit.'],
-      ['under2','Under $2,000 a month','neutral','Average monthly net profit is below Empire Flippers’ published listing floor.'],
+      ['under2','Under $2,000 a month','too_early','Average monthly net profit is below Empire Flippers’ published $2,000 listing floor.'],
       ['2to5','$2,000 to $5,000','helps','Average monthly net profit is at or above Empire Flippers’ published floor.'],
       ['5to15','$5,000 to $15,000','helps','Average monthly net profit is above the published floor.'],
       ['15plus','More than $15,000','helps','Average monthly net profit is well above the published floor.'],
@@ -73,10 +73,15 @@
     const criticalUnknown=rows.filter(r=>['profit','trend','health'].includes(r.id)&&r.effect==='unknown');
     let type,title,summary,priority,reasonRows;
     if(tooEarly.length){
-      type='too_early'; title='Too early to tell';
-      summary='The business is not yet at the point where this check can give a useful sale-readiness reading.';
+      type='too_early';
+      title=answers.age==='lt12'?'Not enough selling history yet':answers.profit==='under2'?'Below the broker’s published profit minimum':'Not yet ready to list';
+      summary='Empire Flippers currently requires at least 12 months of active revenue and $2,000 average monthly net profit over the last 12 months. Your answers do not meet at least one of those requirements.';
       reasonRows=tooEarly.slice(0,3);
-      priority=answers.age==='lt12'?'Build a full 12 months of operating history, then run the check again.':'Focus on reaching consistent positive net profit before planning a sale process.';
+      priority=answers.age==='lt12'
+        ? 'Build 12 months of active selling history, then revisit your results.'
+        : answers.profit==='under2'
+          ? 'Work toward a documented 12-month average of at least $2,000 monthly net profit before seeking a listing.'
+          : 'Focus on consistently positive net profit and reliable monthly records before planning a sale process.';
     } else if(criticalUnknown.length||unknown.length>=2){
       type='need_info'; title='Get the missing information first';
       summary='One or more numbers that matter to a sale decision are still unclear.';
@@ -91,9 +96,14 @@
       priority=map[first&&first.id]||'Fix the highest-risk issue above before starting a sale process.';
     } else {
       type='ready'; title='Ready to explore';
-      summary='Nothing in your answers triggered an obvious stop sign under this check’s published rules.';
-      reasonRows=rows.filter(r=>r.effect==='helps').slice(0,3);
-      priority='Get an external valuation estimate, then decide whether the likely outcome is worth starting a sale process.';
+      const caveats=[...drag,...unknown];
+      summary=caveats.length
+        ? 'You meet this check’s basic readiness rules, but the issue below still deserves attention. This is not broker approval.'
+        : 'Nothing in your answers triggered an obvious stop sign under this check’s published rules. This is not broker approval.';
+      reasonRows=[...caveats,...rows.filter(r=>r.effect==='helps')].slice(0,3);
+      priority=caveats.length
+        ? 'Review the risk or missing detail above, then get an external valuation estimate to assess your options.'
+        : 'Get an external valuation estimate, then decide whether the likely outcome is worth starting a sale process.';
     }
     return {type,title,summary,priority,reasons:reasonRows};
   }
@@ -102,7 +112,8 @@
     const profitEligible=['2to5','5to15','15plus'].includes(answers.profit);
     const ageEligible=answers.age!=='lt12';
     const noActiveHealth=answers.health!=='active';
-    return result.type==='ready'||(result.type==='prepare_first'&&profitEligible&&ageEligible&&noActiveHealth);
+    return profitEligible && ageEligible && noActiveHealth &&
+      (result.type==='ready'||result.type==='prepare_first');
   }
 
   return {questions,evaluate,shouldShowValuation};
