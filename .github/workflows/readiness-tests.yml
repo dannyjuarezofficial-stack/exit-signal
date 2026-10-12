@@ -1,0 +1,24 @@
+name: Exit Signal readiness regression
+on:
+  pull_request:
+    paths:
+      - public/assets/readiness.js
+      - public/methodology/index.html
+      - tests/readiness.test.cjs
+      - .github/workflows/readiness-tests.yml
+  push:
+    paths:
+      - public/assets/readiness.js
+      - tests/readiness.test.cjs
+      - .github/workflows/readiness-tests.yml
+
+jobs:
+  verify-readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run readiness decision tests
+        run: node --test tests/readiness.test.cjs
