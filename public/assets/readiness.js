@@ -4,7 +4,7 @@
   else root.ExitSignalReadiness=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(){
   const questions = [
-    {id:'age', q:'How long has the business been selling on Amazon?', options:[
+    {id:'age', q:'How long has this business actively generated sales revenue on Amazon?', options:[
       ['lt12','Less than 12 months','too_early','The business has less than 12 months of sales history.'],
       ['12to24','12 to 24 months','neutral','The business has at least 12 months of history.'],
       ['2to4','2 to 4 years','helps','The business has a multi-year operating history.'],
